@@ -22,6 +22,19 @@ def create_graph(edgeList, type):
         G.add_edge(edge[0], edge[1])
     return G
 
+def create_aggr_network(file):
+    G=nx.Graph()    
+
+    #create graph from csv
+    with open(file, "rt") as csvfile:
+        mydata = csv.reader(csvfile, delimiter=',', quotechar='|')
+        for row in mydata:
+            if row[0]!="" and row[1]!="" and row[2]!="":    
+                vertex1 = int(row[0])
+                vertex2 = int(row[1])
+                G.add_edge(vertex1,vertex2)
+    return G 
+
 def main():
     # My code here
     pass
